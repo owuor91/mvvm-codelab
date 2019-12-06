@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupRv()
         wordViewModel = ViewModelProvider(this).get(WordViewModel::class.java)
-        wordViewModel.allWords.observe(this, Observer { words ->
+        wordViewModel.fetchAllWords().observe(this, Observer { words ->
             words?.let { adapter.setWords(it) }
         })
         fab.setOnClickListener {
